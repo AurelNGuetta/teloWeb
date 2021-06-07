@@ -1,0 +1,40 @@
+.details{
+    width: 100vw;
+    height: 100%;
+    background: #000;
+    display: block;
+}
+
+.details .first{
+    width: 500px;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 100%;
+}
+.details .sec{
+    position: relative;
+    width: 80%;
+    height: 500px;
+    padding: 1rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+}
+.first img{
+    width: 100%;
+    height: 100%;
+}
+.details .second{
+    width: 40%;
+    height: 500px;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.second .name{
+    font: normal bold 2.5rem Arial;
+}
+.second .jobs{ color: #fff; font-size: 1.2rem; font-style: italic;}

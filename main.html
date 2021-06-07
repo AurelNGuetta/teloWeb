@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telo Web App</title>
+  <link rel="stylesheet" href="css/details.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/eye.css">
+  <link rel="stylesheet" href="css/card.css">
+  <link rel="stylesheet" href="css/aos.css">
+  <script src="js/vue.js"> </script>
+</head>
+
+<body>
+  <div id="root">
+    <div id="main" v-if="step1">
+      <div class="model" style="margin: 0 auto;">
+        <div class="wrap">
+          <div class="eye double-blink"></div>
+          <div class="eye double-blink"></div>
+        </div>
+      </div>
+      <h1 id="message">Bonjour</h1>
+    </div>
+    <div class="select-person-info" id="person" v-if="step2">
+      <div class="grid">
+        <label class="card" v-for="value in persons" :key="value.id" v-on:click="choosePerson(value)">
+          <input class="card__input" type="radio" />
+          <div class="card__body">
+            <div class="card__body-cover"><img class="card__body-cover-image"
+                src="https://www.orange.ci/particuliers/resources/img/internet-fibre-adsl.jpg" />
+            </div>
+            <header class="card__body-header">
+              <h5 class="card__body-header-title">{{ value.prenoms + ' '+ value.nom}} </h5>
+            </header>
+          </div>
+        </label>
+      </div>
+    </div>
+  
+    <!-- // Person detail information -->
+    <div class="details" id="details" v-if="step3">
+      <div class="sec">
+        <div class="first">
+          <img
+            src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+            alt="" id="detail-img" />
+        </div>
+        <div class="second">
+          <span>
+            <div class="name" id="detail-name">{{ user.name }} </div>
+            <div class="jobs" id="detail-jobs">{{ user.jobs }}</div>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/socket.io.js"></script>
+  <script src="js/fuck.js"> </script>
+  <script src="js/aos.js"> </script>
+  <script>
+    AOS.init();
+  </script>
+
+</body>
+
+</html>
