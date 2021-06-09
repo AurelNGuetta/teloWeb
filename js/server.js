@@ -51,6 +51,20 @@ api.on("connection", function (api) {
     console.log(data);
     console.log(typeof(data));
   });
+  api.on("info-manager-section", function (data) {
+    client.emit("manager-section", {
+        content: data,
+    });
+    console.log(data);
+    console.log(typeof(data));
+  });
+  api.on("info-section", function (data) {
+    client.emit("info-section", {
+        content: data,
+    });
+    console.log(data);
+    console.log(typeof(data));
+  });
 });
 
 

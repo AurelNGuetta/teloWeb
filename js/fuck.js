@@ -3,10 +3,6 @@ var x ;
 
 var persons = get("#person");
 
-var detail = get('#details');
-var detail_img = get('#detail-img');
-var detail_name = get('#detail-name');
-var detail_jobs = get('#detail-jobs');
 
 var socket = io.connect('http://192.168.252.216:9400/client',);
 
@@ -25,11 +21,14 @@ const vueApp = new Vue({
         persons: [],
         user: {
             name : '',
-            jobs : ''
+            jobs : '',
+            photo: '',
         },
+        section: '',
         step1: true,
         step2: false,
         step3: false,
+        step4: false,
     },
     methods: {
        
@@ -39,6 +38,7 @@ const vueApp = new Vue({
             speech(this.selectedItem);
             self.user.jobs = person.poste;
             self.user.name = person.prenoms + ' ' + person.nom;
+            self.user.photo = person.photo;
             turnAllFalse();
             self.step3 = true;
         },
@@ -53,6 +53,23 @@ const vueApp = new Vue({
                 console.log("serv", self.persons)
                 turnAllFalse();
                 self.step2 = true;
+            })
+            socket.on('manager-section', function (data) {
+                console.log("Section manager info coming !!")
+                let manager = data.content[0]
+                self.user.jobs = manager.poste;
+                self.user.name = manager.prenoms + ' ' + manager.nom;
+                self.user.photo = manager.photo;
+                console.log(data.content)
+                turnAllFalse();
+                self.step3 = true;
+            })
+            socket.on('info-section', function (data) {
+                console.log("Section info data coming !!")
+                self.section = data.content[0].section_image
+                console.log(self.section)
+                turnAllFalse();
+                self.step4 = true;
             })
         },
     
@@ -75,4 +92,5 @@ let turnAllFalse = function(){
     self.step1= false;
     self.step2= false;
     self.step3= false;
+    self.step4= false;
 }
