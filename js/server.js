@@ -65,6 +65,20 @@ api.on("connection", function (api) {
     console.log(data);
     console.log(typeof(data));
   });
+  api.on("start-speak", function (data) {
+    speech.emit("pitch", {
+        content: data,
+    });
+    console.log(data);
+    console.log(typeof(data));
+  });
+  api.on("guide-section", function (data) {
+      // client.emit("info-section", {
+      //     content: data,
+      // });
+    console.log('guide moi');
+    console.log(data[0].road);
+  });
 });
 
 
