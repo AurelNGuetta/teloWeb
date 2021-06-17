@@ -25,6 +25,7 @@ const vueApp = new Vue({
             photo: '',
         },
         section: '',
+        welcome: 'bonjour',
         step1: true,
         step2: false,
         step3: false,
@@ -74,6 +75,7 @@ const vueApp = new Vue({
             socket.on('home', function(data){
                 console.log("Go to home display instruction coming...")
                 console.log(data);
+                self.welcome = "AKW@BA";
                 turnAllFalse();
                 self.step1 = true;
             });
