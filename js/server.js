@@ -90,6 +90,13 @@ speech.on("connection", function (speech) {
     content: "Connexion socket établie.",
   });
 
+
+  speech.on('home', function(data){
+    console.log(data);
+
+    client.emit('home', data)
+  });
+
 });
 
 

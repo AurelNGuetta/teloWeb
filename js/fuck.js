@@ -4,7 +4,7 @@ var x ;
 var persons = get("#person");
 
 
-var socket = io.connect('http://192.168.252.216:9400/client',);
+var socket = io.connect('http://192.168.252.119:9400/client',);
 
 
 // Quand on reçoit un message, on l'insère dans la page
@@ -71,6 +71,12 @@ const vueApp = new Vue({
                 turnAllFalse();
                 self.step4 = true;
             })
+            socket.on('home', function(data){
+                console.log("Go to home display instruction coming...")
+                console.log(data);
+                turnAllFalse();
+                self.step1 = true;
+            });
         },
     
     },
